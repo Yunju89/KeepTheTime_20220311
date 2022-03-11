@@ -1,6 +1,6 @@
 package org.techtown.keepthetime_20220311.api
 
-import org.json.JSONObject
+import org.techtown.keepthetime_20220311.datas.BasicResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -14,7 +14,7 @@ interface APIList {
     @POST("/user")
     fun postRequestLogin(             // @ Field 안에 키값을 담아줌
         @Field("email") email : String ,
-        @Field("password") pw : String )  : Call<JSONObject>
+        @Field("password") pw : String )  : Call<BasicResponse>// 서버가 주는 응답을 (성공시에) BasicResponse 형태로 자동 파싱
 
 
 }
