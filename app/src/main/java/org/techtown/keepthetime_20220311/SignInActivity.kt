@@ -48,7 +48,8 @@ class SignInActivity : BaseActivity() {
 
 //                        Retrofit 의 Callback 은 UIThread 안으로 다시 돌아오도록 처리 되어있다.
 //                        UI 조작을 위해 runOnUiThread {  }  작성 필요 X.
-                        Toast.makeText(mContext, br.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(mContext, "${br.data.user.nick_name}님, 환영합니다.", Toast.LENGTH_SHORT).show()
+
 
                     }
 //                    실패인지?
