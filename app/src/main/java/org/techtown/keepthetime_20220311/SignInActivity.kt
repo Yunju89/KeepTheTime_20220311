@@ -1,5 +1,6 @@
 package org.techtown.keepthetime_20220311
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -66,6 +67,13 @@ class SignInActivity : BaseActivity() {
                 }
 
             })
+
+        }
+
+        binding.btnSingUp.setOnClickListener {
+
+            val myIntent = Intent( mContext, SignUpActivity::class.java)
+            startActivity(myIntent)
 
         }
 
