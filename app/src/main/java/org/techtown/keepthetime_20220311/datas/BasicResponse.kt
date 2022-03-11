@@ -5,8 +5,8 @@ package org.techtown.keepthetime_20220311.datas
 //  레트로핏과 연계하면, 파싱이 자동 진행됨.
 
 class BasicResponse(
-    val code: Int,
-    val message: String,
+    val code : Int,
+    val message : String,
 ) {
 
 }
