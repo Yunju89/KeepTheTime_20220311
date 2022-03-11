@@ -1,6 +1,7 @@
 package org.techtown.keepthetime_20220311
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import org.techtown.keepthetime_20220311.databinding.ActivitySignInBinding
 import org.techtown.keepthetime_20220311.databinding.ActivitySignUpBinding
@@ -34,6 +35,10 @@ class SignUpActivity : BaseActivity() {
                     call: Call<BasicResponse>,
                     response: Response<BasicResponse>
                 ) {
+                    if(response.isSuccessful){
+                        Toast.makeText(mContext, "회원가입 성공", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
 
                 }
 

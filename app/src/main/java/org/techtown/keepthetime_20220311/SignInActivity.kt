@@ -74,7 +74,6 @@ class SignInActivity : BaseActivity() {
 
             val myIntent = Intent( mContext, SignUpActivity::class.java)
             startActivity(myIntent)
-
         }
 
 
