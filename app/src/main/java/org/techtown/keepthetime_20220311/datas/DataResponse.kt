@@ -9,10 +9,12 @@ package org.techtown.keepthetime_20220311.datas
 
 class DataResponse(
 
-    val user : UserData,
-    val token : String,
+    val user: UserData,
+    val token: String,
 
-    val friends : List<UserData>,      // 친구 목록 불러올 때 사용할 변수.
+    val friends: List<UserData>,      // 친구 목록 불러올 때 사용할 변수.
+
+    val users: List<UserData>,     // 검색 결과의 사용자 목록
 
 ) {
 }
