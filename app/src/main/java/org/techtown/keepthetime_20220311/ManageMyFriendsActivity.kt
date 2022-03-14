@@ -1,5 +1,6 @@
 package org.techtown.keepthetime_20220311
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
@@ -30,6 +31,11 @@ class ManageMyFriendsActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        binding.btnAddFriend.setOnClickListener {
+            val myIntent = Intent(mContext, SearchUserActivity::class.java)
+            startActivity(myIntent)
+        }
 
     }
 
