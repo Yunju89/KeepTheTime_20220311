@@ -3,6 +3,7 @@ package org.techtown.keepthetime_20220311
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
+import org.techtown.keepthetime_20220311.adapters.MyFriendAdapter
 import org.techtown.keepthetime_20220311.databinding.ActivityManageMyFriendsBinding
 import org.techtown.keepthetime_20220311.datas.BasicResponse
 import org.techtown.keepthetime_20220311.datas.UserData
@@ -16,6 +17,8 @@ class ManageMyFriendsActivity : BaseActivity() {
     lateinit var binding: ActivityManageMyFriendsBinding
 
     val mFriendList = ArrayList<UserData>()
+
+    lateinit var mAdapter : MyFriendAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +36,9 @@ class ManageMyFriendsActivity : BaseActivity() {
     override fun setValues() {
 
         getMyFriendListFromServer()
+
+        mAdapter = MyFriendAdapter(mContext, R.layout.my_friend_list_item, mFriendList)
+        binding.myFriendsListView.adapter = mAdapter
 
     }
 
@@ -54,6 +60,8 @@ class ManageMyFriendsActivity : BaseActivity() {
                     mFriendList.addAll(br.data.friends)
 
 //                    어댑터 새로 고침
+                    mAdapter.notifyDataSetChanged()
+
 
                 }
 
