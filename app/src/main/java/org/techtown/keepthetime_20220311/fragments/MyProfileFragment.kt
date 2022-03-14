@@ -90,7 +90,7 @@ class MyProfileFragment : BaseFragment(){
 
                     binding.txtNickname.text = br.data.user.nick_name
 
-                    Glide.with(mContext).load(br.data.user.profile_image).into(binding.imgProfile)
+                    Glide.with(mContext).load(br.data.user.profile_img).into(binding.imgProfile)
 
 
 
