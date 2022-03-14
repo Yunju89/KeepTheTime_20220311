@@ -4,6 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import org.techtown.keepthetime_20220311.databinding.ActivityMainBinding
+import org.techtown.keepthetime_20220311.datas.BasicResponse
+import org.techtown.keepthetime_20220311.utils.ContextUtil
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : BaseActivity() {
 
@@ -25,7 +30,19 @@ class MainActivity : BaseActivity() {
     override fun setValues() {
 
 //        GET - /user 접근해서, 내 정보 조회
-//        토큰 값 필요함 => 로그인 성공 시 토큰 저장, ContextUtil에서 추출해서 사용.
+//        토큰 값 필요함 => 로그인 성공 시 토큰 저장, ContextUtil 에서 추출해서 사용.
+
+         apiList.getRequestMyInfo(ContextUtil.getLoginUserToken(mContext)).enqueue(object : Callback<BasicResponse>{
+             override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
+
+             }
+
+             override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+
+             }
+
+         })
+
 
     }
 
