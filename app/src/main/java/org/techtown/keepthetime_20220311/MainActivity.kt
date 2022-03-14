@@ -35,6 +35,8 @@ class MainActivity : BaseActivity() {
         mAdapter = MainViewPagerAdapter( supportFragmentManager )
         binding.mailViewPager.adapter = mAdapter
 
+        binding.mailTabLayout.setupWithViewPager(binding.mailViewPager)
+
     }
 
 
