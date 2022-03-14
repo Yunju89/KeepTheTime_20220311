@@ -10,6 +10,7 @@ import org.techtown.keepthetime_20220311.api.APIList
 import org.techtown.keepthetime_20220311.api.ServerAPI
 import org.techtown.keepthetime_20220311.databinding.ActivitySignInBinding
 import org.techtown.keepthetime_20220311.datas.BasicResponse
+import org.techtown.keepthetime_20220311.utils.ContextUtil
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,6 +52,15 @@ class SignInActivity : BaseActivity() {
 //                        UI 조작을 위해 runOnUiThread {  }  작성 필요 X.
                         Toast.makeText(mContext, "${br.data.user.nick_name}님, 환영합니다.", Toast.LENGTH_SHORT).show()
 
+//                        서버가 내려주는 토큰값을 저장.
+                        ContextUtil.setLoginUserToken(mContext, br.data.token)
+
+
+//                        메인화면으로 이동, 현재화면 종료
+                        val myIntent = Intent(mContext, MainActivity :: class.java)
+                        startActivity(myIntent)
+
+                        finish()
 
                     }
 //                    실패인지?

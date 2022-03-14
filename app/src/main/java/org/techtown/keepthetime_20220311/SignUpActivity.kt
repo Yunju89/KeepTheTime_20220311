@@ -1,5 +1,6 @@
 package org.techtown.keepthetime_20220311
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -39,7 +40,8 @@ class SignUpActivity : BaseActivity() {
 
                         val br = response.body()!!
 
-                        Toast.makeText(mContext, "${br.data.user.id}번째 회원ㅅ", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(mContext, "${br.data.user.id}번째 회원", Toast.LENGTH_SHORT).show()
+
                         finish()
                     }
 
