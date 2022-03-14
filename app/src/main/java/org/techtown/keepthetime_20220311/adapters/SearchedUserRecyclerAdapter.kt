@@ -10,7 +10,7 @@ import org.techtown.keepthetime_20220311.R
 
 class SearchedUserRecyclerAdapter(
     val mContext: Context,
-    val mList : List<UserData>,
+    val mList: ArrayList<org.techtown.keepthetime_20220311.datas.UserData>,
 ) : RecyclerView.Adapter<SearchedUserRecyclerAdapter.MyViewHolder>() {  //MyViewHolder 적으면 자동적용
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view){    //ViewHolder 적으면 자동적용  //view:View 생성자 받아와서, view 넘겨줌.
