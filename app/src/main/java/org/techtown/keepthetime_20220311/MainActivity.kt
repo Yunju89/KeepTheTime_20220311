@@ -35,6 +35,16 @@ class MainActivity : BaseActivity() {
          apiList.getRequestMyInfo(ContextUtil.getLoginUserToken(mContext)).enqueue(object : Callback<BasicResponse>{
              override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
 
+                 if(response.isSuccessful){
+
+//                     JSON 응답을 서버에서 보고, 파싱 진행 => 파싱 된 변수들을 활용.
+//                     이미 파싱해 둔 구조 재활용.
+                     val br = response.body()!!     // 타이핑 덜 하기 위해 옮겨담는 변수
+
+                     binding.txtUserNickName.text = br.data.user.nick_name
+
+                 }
+
              }
 
              override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
