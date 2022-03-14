@@ -5,6 +5,7 @@ import android.service.autofill.UserData
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import org.techtown.keepthetime_20220311.R
 
@@ -14,6 +15,13 @@ class SearchedUserRecyclerAdapter(
 ) : RecyclerView.Adapter<SearchedUserRecyclerAdapter.MyViewHolder>() {  //MyViewHolder 적으면 자동적용
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view){    //ViewHolder 적으면 자동적용  //view:View 생성자 받아와서, view 넘겨줌.
+
+        val imgProfile = view.findViewById<ImageView>(R.id.imgProfile)
+        val txtNickname = view.findViewById<ImageView>(R.id.txtNickname)
+        val txtEmail = view.findViewById<ImageView>(R.id.txtEmail)
+        val imgSocialLoginLogo = view.findViewById<ImageView>(R.id.imgSocialLoginLogo)
+        val btnAddFriend = view.findViewById<ImageView>(R.id.btnAddFriend)
+
 
     }
 
