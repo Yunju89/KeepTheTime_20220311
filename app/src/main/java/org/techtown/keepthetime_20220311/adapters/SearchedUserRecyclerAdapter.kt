@@ -10,7 +10,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import org.techtown.keepthetime_20220311.R
+import org.techtown.keepthetime_20220311.api.APIList
+import org.techtown.keepthetime_20220311.api.ServerAPI
 import org.techtown.keepthetime_20220311.datas.UserData
+import retrofit2.create
 
 class SearchedUserRecyclerAdapter(
     val mContext: Context,
@@ -52,6 +55,17 @@ class SearchedUserRecyclerAdapter(
                     txtEmail.text = "네이버 로그인"
                 }
             }
+
+//            친구 추가 버튼이 눌리면 할 일 => 친구 추가 요청 API 호출
+//            어댑터에서 => API 호출 => 레트로핏 객체 직접 생성해서 호출
+
+            val retrofit = ServerAPI.getRetrofit()      // 레트로핏 객체를 서버api 통해 받아오기
+            val apiList = retrofit.create(APIList::class.java)      //apiList 객체를 레트로핏 이용해 생성.(APIList 인터페이스)
+
+
+
+
+
 
         }
 

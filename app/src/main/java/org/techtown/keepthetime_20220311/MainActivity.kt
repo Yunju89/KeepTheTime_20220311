@@ -33,9 +33,9 @@ class MainActivity : BaseActivity() {
     override fun setValues() {
 
         mAdapter = MainViewPagerAdapter( supportFragmentManager )
-        binding.mailViewPager.adapter = mAdapter
+        binding.mainViewPager.adapter = mAdapter
 
-        binding.mailTabLayout.setupWithViewPager(binding.mailViewPager)
+        binding.mainTabLayout.setupWithViewPager(binding.mainViewPager)
 
     }
 
