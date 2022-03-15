@@ -1,8 +1,10 @@
 package org.techtown.keepthetime_20220311
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.widget.DatePicker
+import android.widget.TimePicker
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import org.techtown.keepthetime_20220311.databinding.ActivityEditAppointmentBinding
@@ -27,6 +29,7 @@ class EditAppointmentActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+//        날짜 선택 텍스트뷰 클릭 이벤트 - DatePickerDialog
         binding.txtDate.setOnClickListener {
             val dsl = object : DatePickerDialog.OnDateSetListener{
                 override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
@@ -46,11 +49,34 @@ class EditAppointmentActivity : BaseActivity() {
             }
 
             val dpd = DatePickerDialog(
-                mContext,
-                dsl,
-                mSelectedAppointmentDateTime.get(Calendar.YEAR),
+                mContext,   // 어느화면
+                dsl,        // 날짜 선택시 할 일
+                mSelectedAppointmentDateTime.get(Calendar.YEAR),        //팝업 출현 시 기본 선택 값
                 mSelectedAppointmentDateTime.get(Calendar.MONTH),
                 mSelectedAppointmentDateTime.get(Calendar.DAY_OF_MONTH)
+            ).show()
+
+        }
+
+//        시간 선택 텍스트뷰 클릭 이벤트 - TimePickDialog
+
+        binding.txtTime.setOnClickListener {
+
+            val tsl = object : TimePickerDialog.OnTimeSetListener {
+                override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
+
+                    Toast.makeText(mContext, "${hourOfDay}시${minute}분 선택", Toast.LENGTH_SHORT).show()
+
+                }
+
+            }
+
+            val tpd = TimePickerDialog(
+                mContext,
+                tsl,
+                18,
+                0,
+                false
             ).show()
 
         }
