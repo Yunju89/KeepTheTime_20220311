@@ -32,7 +32,7 @@ class SplashActivity : BaseActivity() {
 
         var isMyInfoLoaded = false
 
-        apiList.getRequestMyInfo(ContextUtil.getLoginUserToken(mContext)).enqueue(object : Callback<BasicResponse>{
+        apiList.getRequestMyInfo().enqueue(object : Callback<BasicResponse>{
             override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
 //                CODE : 200 => 성공 응답이왔다. 내정보 잘불러와짐
                 if(response.isSuccessful){
