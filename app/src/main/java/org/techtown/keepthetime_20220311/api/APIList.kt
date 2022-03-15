@@ -50,6 +50,12 @@ interface APIList {
         @Field("user_id") userId: Int,
     ) : Call<BasicResponse>
 
+    @FormUrlEncoded
+    @PUT("/user/friend")
+    fun putRequestAcceptOrDenyFriendRequest(
+        @Field("user_id") userId: Int,
+        @Field("type") type: String, // 수락, 거절
+    ):Call<BasicResponse>
 
 
 
