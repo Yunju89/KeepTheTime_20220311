@@ -33,7 +33,6 @@ class MyFriendAdapter(
         val imgSocialLoginLogo = row.findViewById<ImageView>(R.id.imgSocialLoginLogo)
 
         Glide.with(mContext).load(data.profile_img).into(imgProfile)
-        txtEmail.text = data.email
         txtNickname.text = data.nick_name
 
 //        사용자의 provider - "default" : 이메일 표시, "kakao" : 카카오 로그인, "facebook" : 페북, "naver" : 네이버 로그인
