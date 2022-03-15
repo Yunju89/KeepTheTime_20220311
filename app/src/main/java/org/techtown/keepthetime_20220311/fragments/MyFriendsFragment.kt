@@ -60,7 +60,7 @@ class MyFriendsFragment : BaseFragment() {
 
     fun getMyFriendsFromServer(){
 
-        apiList.getRequestMyFriendList("my").enqueue(object : Callback<BasicResponse>{
+        apiList.getRequestFriendList("my").enqueue(object : Callback<BasicResponse>{
             override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
 
                 if(response.isSuccessful){

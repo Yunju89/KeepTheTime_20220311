@@ -35,7 +35,7 @@ interface APIList {
     ) : Call<BasicResponse>
 
     @GET("/user/friend")
-    fun getRequestMyFriendList(
+    fun getRequestFriendList(
         @Query("type") type: String,    // all, my, requested 세 문구 외에는 넣지 말자.
     ) : Call<BasicResponse>
 
