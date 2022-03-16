@@ -12,6 +12,10 @@ import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.PathOverlay
+import com.odsay.odsayandroidsdk.API
+import com.odsay.odsayandroidsdk.ODsayData
+import com.odsay.odsayandroidsdk.ODsayService
+import com.odsay.odsayandroidsdk.OnResultCallbackListener
 import org.techtown.keepthetime_20220311.databinding.ActivityEditAppointmentBinding
 import org.techtown.keepthetime_20220311.datas.BasicResponse
 import retrofit2.Call
@@ -230,7 +234,40 @@ class EditAppointmentActivity : BaseActivity() {
                 mSelectedLatLng = latLng
 
 
-//                출발 coord ~ 선택 latLng 까지 직선 그려보자. (pathOverlay 기능 활용)
+//                출발 coord ~ 선택 latLng 까지 대중교통 경로를 그려보자. (pathOverlay 기능 활용), + ODSay 라이브러리 활용
+
+                val myODSayService = ODsayService.init(mContext, "9Xh+Oz2ktqZJHEOLmRJL5TekT/lucTE3zXGFzwZ5otA")
+
+                myODSayService.requestSearchPubTransPath(
+                    coord.longitude.toString(),
+                    coord.latitude.toString(),
+                    latLng.longitude.toString(),
+                    latLng.latitude.toString(),
+                    null,
+                    null,
+                    null,
+                    object : OnResultCallbackListener{
+                        override fun onSuccess(p0: ODsayData?, p1: API?) {
+
+                            val jsonObj = p0!!.json!!
+                            Log.d("길찾기응답", jsonObj.toString())
+
+                            val resultObj = jsonObj.getJSONObject("result")
+                            Log.d("result", jsonObj.toString())
+
+                            val pathArr = resultObj.getJSONArray("path")    // 여러 추천 경로 중 첫번째만 사용해보자.
+
+                            val firstPathObj = pathArr.getJSONObject(0)     // 0번째 경로 추출
+                            Log.d("첫번째 경로", firstPathObj.toString())
+
+
+                        }
+
+                        override fun onError(p0: Int, p1: String?, p2: API?) {
+
+                        }
+                    }
+                )
 
 
                 if(path == null){
