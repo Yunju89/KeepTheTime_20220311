@@ -1,9 +1,11 @@
 package org.techtown.keepthetime_20220311
 
+import android.graphics.Camera
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.naver.maps.geometry.LatLng
+import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.MapView
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.overlay.Marker
@@ -19,9 +21,6 @@ class ViewMapActivity : BaseActivity() {
 
     lateinit var mapView : MapView
 
-    var marker : Marker? = null   // 지도에 표시될 하나의 마커. 처음에는 찍지 않은 상태
-    var path : PathOverlay? = null  // 출발지 ~ 도착지 까지 보여줄 경로 선. 처음에는 보이지 않는 상태.
-    var mSelectedLatLng : LatLng? = null    // 약속 장소의 위/경도도 처음에는 설정하지 않은 상태.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,10 +39,22 @@ class ViewMapActivity : BaseActivity() {
 
     override fun setValues() {
 
-
-        binding.mapView.getMapAsync {
+        binding.naverMapView.getMapAsync {
 
             val naverMap = it
+
+//            도착지 자체를 변수화
+            val destLatLng = LatLng(mAppointment.latitude, mAppointment.longitude)
+
+//            도착지로 카메라 이동
+            val cameraUpdate = CameraUpdate.scrollTo( destLatLng )
+            naverMap.moveCamera(cameraUpdate)
+
+//            마커 생성
+            val marker = Marker()
+            marker.position = destLatLng
+            marker.map = naverMap
+
 
 
 
