@@ -1,5 +1,7 @@
 package org.techtown.keepthetime_20220311.datas
 
+import java.io.Serializable
+
 //  서버가 알려주는 사용자 정보를 담기 위한
 
 
@@ -12,6 +14,6 @@ class UserData(
     val nick_name : String,
     val profile_img : String,
 
-    ) {
+    ) : Serializable {
 
 }

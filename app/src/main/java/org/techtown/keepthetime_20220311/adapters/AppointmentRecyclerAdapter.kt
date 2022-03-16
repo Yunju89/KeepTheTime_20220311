@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import org.techtown.keepthetime_20220311.EditAppointmentActivity
 import org.techtown.keepthetime_20220311.R
 import org.techtown.keepthetime_20220311.ViewMapActivity
 import org.techtown.keepthetime_20220311.datas.AppointmentData
@@ -41,7 +42,8 @@ class AppointmentRecyclerAdapter(
 
             imgViewMap.setOnClickListener {
                 val myIntent = Intent(mContext, ViewMapActivity::class.java)
-                mContext.startActivity(myIntent)
+                myIntent.putExtra("appointment", data)
+                mContext.startActivity(myIntent)        //Activity 아니기 때문에, mContext 통해서 불러옴.
             }
 
 
