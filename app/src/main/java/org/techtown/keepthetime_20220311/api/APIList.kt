@@ -67,6 +67,9 @@ interface APIList {
         @Field("longitude") lng : Double,
     ):Call<BasicResponse>
 
+    @GET("/appointment")
+    fun getRequestMyAppointment(
+    ):Call<BasicResponse>
 
 
 
