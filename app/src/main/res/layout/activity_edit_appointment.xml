@@ -69,7 +69,7 @@
         android:id="@+id/edtPlaceName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="장소입력"/>
+        android:hint="장소입력"/>
 
     <com.naver.maps.map.MapView
         android:id="@+id/naverMapView"
