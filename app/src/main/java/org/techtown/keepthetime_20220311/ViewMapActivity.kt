@@ -19,9 +19,6 @@ class ViewMapActivity : BaseActivity() {
 
     lateinit var mAppointment : AppointmentData
 
-    lateinit var mapView : MapView
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_view_map)
