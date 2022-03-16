@@ -68,7 +68,7 @@ interface APIList {
     ):Call<BasicResponse>
 
     @GET("/appointment")
-    fun getRequestMyAppointment(
+    fun getRequestAppointmentList(
     ):Call<BasicResponse>
 
 
