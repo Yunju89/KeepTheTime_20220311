@@ -58,11 +58,18 @@ class ViewMapActivity : BaseActivity() {
             marker.map = naverMap
 
 //            Path  객체의 좌표를 설정, => naverMap 추가
-            val path = PathOverlay()
+//            val path = PathOverlay()  => 준비되면 만드는걸로
 
 //            path.coords => 출발지 / 도착지만 넣으면 일직선 연결
 
 //            출발지~도착지 사이의 정거장이 있다면, 정거장들을 좌표로 추가
+
+            val stationList = ArrayList<LatLng>()
+
+//            첫 좌표는 출발점.
+            stationList.add(LatLng(mAppointment.start_latitude,mAppointment.start_longitude))
+
+//            거치게 되는 정거장 목록 > ODSayService 로 받아서 추가.
 
             val myODsayService = ODsayService.init(mContext, "9Xh+Oz2ktqZJHEOLmRJL5TekT/lucTE3zXGFzwZ5otA")
 
@@ -85,6 +92,49 @@ class ViewMapActivity : BaseActivity() {
                         val resultObj = jsonObj.getJSONObject("result")
                         Log.d("result", resultObj.toString())
 
+                        val pathArr = resultObj.getJSONArray("path")    // 여러개의 추천 경로 중 0번째 경로 사용(코딩편의)
+
+                        val firstPathObj = pathArr.getJSONObject(0)
+
+//                        첫 경로의 subPath 목록 파싱 (도보 - 버스 - 지하철 - 도보..)
+
+                        val subPathArr = firstPathObj.getJSONArray("subPath")
+
+                        for(i in 0 until subPathArr.length()){
+
+                            val subPathObj = subPathArr.getJSONObject(i)
+
+                            if(!subPathObj.isNull("passStopList")){
+//                                도보가 아니어서, 정거장 목록을 주는 경우
+
+                                val passStopObj = subPathObj.getJSONObject("passStopList")
+                                val stationsArr = passStopObj.getJSONArray("stations")
+
+                                for(j in 0 until stationsArr.length()){
+                                    val stationObj = stationsArr.getJSONObject(j)
+
+                                    val stationLat = stationObj.getString("y").toDouble()
+                                    val stationLng = stationObj.getString("x").toDouble()
+
+//                                    네이버 지도의 경로선에 그려줄 좌표 목록 추가.
+                                    stationList.add(LatLng(stationLat,stationLng))
+
+
+
+                                }
+                            }
+
+                        }
+
+//                        모든 정거장 목록이 추가 되어 있다.
+//                        마지막 경로선으로 도착지 추가
+
+                        stationList.add(destLatLng)
+
+//                        경로선을 지도에 그려주자.
+                        val path = PathOverlay()
+                        path.coords = stationList
+                        path.map = naverMap
 
                     }
 
