@@ -1,6 +1,7 @@
 package org.techtown.keepthetime_20220311.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import org.techtown.keepthetime_20220311.R
+import org.techtown.keepthetime_20220311.ViewMapActivity
 import org.techtown.keepthetime_20220311.datas.AppointmentData
 import java.text.SimpleDateFormat
 
@@ -36,6 +38,11 @@ class AppointmentRecyclerAdapter(
 
             val sdf = SimpleDateFormat("yy년 M월 d일 a h시 m분")
             txtDateTime.text = sdf.format(data.datetime)
+
+            imgViewMap.setOnClickListener {
+                val myIntent = Intent(mContext, ViewMapActivity::class.java)
+                mContext.startActivity(myIntent)
+            }
 
 
 
