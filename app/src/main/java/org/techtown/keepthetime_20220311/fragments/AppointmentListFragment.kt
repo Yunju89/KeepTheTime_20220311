@@ -64,11 +64,20 @@ class AppointmentListFragment : BaseFragment(){
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        getMyAppointmentListFromServer()
+    }
+
     fun getMyAppointmentListFromServer(){
         apiList.getRequestAppointmentList().enqueue(object : Callback<BasicResponse>{
             override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
 
                 if(response.isSuccessful){
+
+//                    기존 약속 목록 비우고 추가
+                    mAppointmentList.clear()
+
                     val br = response.body()!!
 
                     mAppointmentList.addAll(br.data.appointments)
