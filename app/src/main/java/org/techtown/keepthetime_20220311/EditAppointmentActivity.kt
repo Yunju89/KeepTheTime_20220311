@@ -2,7 +2,6 @@ package org.techtown.keepthetime_20220311
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.graphics.Camera
 import android.os.Bundle
 import android.util.Log
 import android.widget.DatePicker
@@ -20,12 +19,12 @@ import com.odsay.odsayandroidsdk.ODsayService
 import com.odsay.odsayandroidsdk.OnResultCallbackListener
 import org.techtown.keepthetime_20220311.databinding.ActivityEditAppointmentBinding
 import org.techtown.keepthetime_20220311.datas.BasicResponse
+import org.techtown.keepthetime_20220311.datas.PlaceData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class EditAppointmentActivity : BaseActivity() {
     lateinit var binding : ActivityEditAppointmentBinding
@@ -36,10 +35,12 @@ class EditAppointmentActivity : BaseActivity() {
 
 //    약속 장소 관련 멤버변수.
     var marker : Marker? = null   // 지도에 표시될 하나의 마커. 처음에는 찍지 않은 상태
-
     var path : PathOverlay? = null  // 출발지 ~ 도착지 까지 보여줄 경로 선. 처음에는 보이지 않는 상태.
 
     var mSelectedLatLng : LatLng? = null    // 약속 장소의 위/경도도 처음에는 설정하지 않은 상태.
+
+//    내 출발 장소 목록
+    val mStartPlaceList = ArrayList<PlaceData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -374,5 +375,31 @@ class EditAppointmentActivity : BaseActivity() {
 
         }
 
+//       내 출발장소 목록 불러오기
+        getMyStartPlaceListFromServer()
     }
+
+    fun getMyStartPlaceListFromServer(){
+
+        apiList.getRequestMyPlaceList().enqueue(object : Callback<BasicResponse>{
+            override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
+                if(response.isSuccessful){
+                    val br = response.body()!!
+
+                    mStartPlaceList.clear()
+                    mStartPlaceList.addAll(br.data.places)
+
+                }
+
+
+
+            }
+
+            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+
+            }
+
+        })
+    }
+
 }
