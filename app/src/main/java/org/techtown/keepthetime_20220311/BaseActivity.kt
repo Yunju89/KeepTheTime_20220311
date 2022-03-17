@@ -2,6 +2,8 @@ package org.techtown.keepthetime_20220311
 
 import android.content.Context
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -14,6 +16,10 @@ abstract class BaseActivity : AppCompatActivity() {
 
 //        모든 화면에서, apiList 가 있다면 => apiList.서버기능() 형태로 간단히 코딩 가능.
     lateinit var apiList : APIList
+
+//    액션바이 UI 요소들을 멤버변수로 => 상속 받은 화면들이 각자 컨트롤 가능.
+    lateinit var txtTitle : TextView
+    lateinit var btnAdd : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,14 +46,16 @@ abstract class BaseActivity : AppCompatActivity() {
         val defaultActionBar = supportActionBar!!
 
         defaultActionBar.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-
 //        defaultActionBar.setDisplayHomeAsUpEnabled(true)      // 다른방법
 
         defaultActionBar.setCustomView(R.layout.my_custom_action_bar)
 
         val toolbar = defaultActionBar.customView.parent as Toolbar
-
         toolbar.setContentInsetsAbsolute(0,0)
+
+//        UI 요소들 실제 값 대입
+        txtTitle = defaultActionBar.customView.findViewById(R.id.txtTitle)
+        btnAdd = defaultActionBar.customView.findViewById(R.id.btnAdd)
 
     }
 }

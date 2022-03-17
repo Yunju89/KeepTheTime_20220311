@@ -1,7 +1,9 @@
 package org.techtown.keepthetime_20220311
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
 import org.techtown.keepthetime_20220311.adapters.MainViewPager2Adapter
@@ -28,6 +30,11 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        btnAdd.setOnClickListener {
+            val myIntent = Intent(mContext, EditAppointmentActivity::class.java)
+            startActivity(myIntent)
+        }
 
 //        바텀 네비게이션 메뉴 선택 > 뷰페이저의 페이지 이동
         binding.mainBottomNav.setOnItemSelectedListener {
@@ -61,6 +68,8 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+        btnAdd.visibility = View.VISIBLE
 
         binding.mainViewPager2.adapter =
             MainViewPager2Adapter(this)    // 변수 : Activity => 객체 : Context 대입 불가,
