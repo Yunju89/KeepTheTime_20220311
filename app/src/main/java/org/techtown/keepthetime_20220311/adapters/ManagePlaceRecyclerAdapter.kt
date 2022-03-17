@@ -7,13 +7,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.techtown.keepthetime_20220311.R
 import org.techtown.keepthetime_20220311.datas.AppointmentData
+import org.techtown.keepthetime_20220311.datas.PlaceData
 
 class ManagePlaceRecyclerAdapter(
     val mContext : Context,
-    val mList : List<AppointmentData>
+    val mList : List<PlaceData>
 ): RecyclerView.Adapter<ManagePlaceRecyclerAdapter.MyViewHolder>(){
 
     inner class MyViewHolder(view : View) : RecyclerView.ViewHolder(view){
+
+        fun bind (data:PlaceData){
+
+        }
 
     }
 
@@ -26,6 +31,8 @@ class ManagePlaceRecyclerAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
+        val data = mList[position]
+        holder.bind(data)
 
 
     }
