@@ -82,6 +82,10 @@ class ViewMapActivity : BaseActivity() {
                 mAppointment.start_latitude.toString(),
                 mAppointment.longitude.toString(),
                 mAppointment.latitude.toString(),
+
+
+
+
                 null,
                 null,
                 null,
