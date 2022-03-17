@@ -132,9 +132,9 @@ class SignInActivity : BaseActivity() {
 
     }
 
-    override fun onActivityReenter(resultCode: Int, data: Intent?) {
-        mCallBackManager.onActivityResult(resultCode, resultCode, data)
-        super.onActivityReenter(resultCode, data)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        mCallBackManager.onActivityResult(requestCode, resultCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     
