@@ -9,11 +9,10 @@
     android:orientation="vertical"
     tools:context=".ManagePlacesActivity">
 
-    <view class="androidx.appcompat.app.AlertController$RecycleListView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/myPlacesRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </view>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
 </layout>
