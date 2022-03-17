@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">KeepTheTime_20220311</string>
+
+    <string name="facebook_app_id">486556099848507</string>
+    <string name="fb_login_protocol_scheme">fb486556099848507</string>
+    <string name="facebook_client_token">f5731b665efd9d7b5bfa8653a98c0d65</string>
+
+
 </resources>
