@@ -33,8 +33,27 @@ class StartPlaceSpinnerAdapter(
         txtStartPlaceName.text = data.name
 
 
-
-
        return row
     }
+
+//    스피너가 선택 가능한 항목의 모양을 결정하는 함수.
+
+    override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+
+        var tmpRow = convertView
+        if(tmpRow == null){
+            tmpRow = LayoutInflater.from(mContext).inflate(R.layout.start_place_spinner_list_item, null)
+        }
+        val row = tmpRow!!
+
+        val data = mList[position]
+
+        val txtStartPlaceName = row.findViewById<TextView>(R.id.txtStartPlaceName)
+
+        txtStartPlaceName.text = data.name
+
+
+        return row
+    }
+
 }
