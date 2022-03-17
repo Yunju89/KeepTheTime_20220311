@@ -37,7 +37,6 @@ class StartPlaceSpinnerAdapter(
     }
 
 //    스피너가 선택 가능한 항목의 모양을 결정하는 함수.
-
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
 
         var tmpRow = convertView
