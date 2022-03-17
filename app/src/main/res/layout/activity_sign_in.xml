@@ -115,6 +115,7 @@
                 android:layout_marginStart="10dp"
                 android:src="@drawable/naver_logo"/>
 
+
         </LinearLayout>
 
 
