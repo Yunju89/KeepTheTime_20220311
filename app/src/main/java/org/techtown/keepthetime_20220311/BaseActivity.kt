@@ -26,8 +26,8 @@ abstract class BaseActivity : AppCompatActivity() {
 
         mContext = this
 
-        val retrofit = ServerAPI.getRetrofit(mContext)
-        apiList = retrofit.create(APIList :: class.java)
+        val retrofit = ServerAPI.getRetrofit(mContext)  // apiList 를 쓰기위해서 retrofit 객체를 생성하는것
+        apiList = retrofit.create(APIList :: class.java)  //객체 자체를 가져다 쓰기위해서, 멤버변수로 선언 후 사용
 
         supportActionBar?.let{
             setCustomActionBar()

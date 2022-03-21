@@ -71,7 +71,7 @@ class SearchUserActivity : BaseActivity() {
         mAdapter = SearchedUserRecyclerAdapter(mContext, mSearchUserList)
         binding.userListRecyclerView.adapter = mAdapter
 
-//        리싸이클러뷰는 어떤 모양으로 목록을 표현할지도 설정해야 화면에 데이터가 나옴.
+//        리싸이클러뷰는 어떤 모양으로 목록을 표현할지도 설정해야 화면에 데이터가 나옴.       // xml 에서 가능
         binding.userListRecyclerView.layoutManager = LinearLayoutManager(mContext)
 
     }
