@@ -19,9 +19,11 @@ import org.techtown.keepthetime_20220311.SplashActivity
 import org.techtown.keepthetime_20220311.databinding.FragmentMyProfileBinding
 import org.techtown.keepthetime_20220311.datas.BasicResponse
 import org.techtown.keepthetime_20220311.utils.ContextUtil
+import org.techtown.keepthetime_20220311.utils.URIPathHelper
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
 
 class MyProfileFragment : BaseFragment(){
 
@@ -133,9 +135,8 @@ class MyProfileFragment : BaseFragment(){
 //                data? 선택된 사진에 대한 정보를 가지고 있다.
                 val selectedImageUri = data?.data!!     // 선택한 사진에 찾아갈 경로 (Uri)  받아내기
 
-//                임시 : 선택한 사진을 이미지뷰에 반영
-                Glide.with(mContext).load(selectedImageUri).into(binding.imgProfile)
-
+//                Uri -> 실제 첨부 가능한 파일 형태로 변환 (File 객체를 Path 통해 만든다) -> Retrofit 에 첨부할 수 있게 됨.
+                val file = File(URIPathHelper().getPath(mContext,selectedImageUri))
 
             }
         }
