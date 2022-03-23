@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -156,6 +157,11 @@ class MyProfileFragment : BaseFragment(){
                         call: Call<BasicResponse>,
                         response: Response<BasicResponse>
                     ) {
+                        if(response.isSuccessful){
+                            Toast.makeText(mContext, "프로필 사진이 변경되었습니다.", Toast.LENGTH_SHORT).show()
+
+                            Glide.with(mContext).load(selectedImageUri).into(binding.imgProfile)
+                        }
 
                     }
 
