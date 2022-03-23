@@ -12,6 +12,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import org.techtown.keepthetime_20220311.ManageMyFriendsActivity
 import org.techtown.keepthetime_20220311.ManagePlacesActivity
 import org.techtown.keepthetime_20220311.R
@@ -137,6 +140,14 @@ class MyProfileFragment : BaseFragment(){
 
 //                Uri -> 실제 첨부 가능한 파일 형태로 변환 (File 객체를 Path 통해 만든다) -> Retrofit 에 첨부할 수 있게 됨.
                 val file = File(URIPathHelper().getPath(mContext,selectedImageUri))
+
+//                완성된 파일을 Retrofit 첨부 가능한 RequestBody 형태로 가공
+                val fileReqBody = RequestBody.create(MediaType.get("img/*"), file)
+
+//                실제로 첨부하자. 일반 형태의 통신 X, Multipart 형태로 전송. MultipartBody 형태로 2차가공
+//                cf) 파일이 같이 첨부되는 API 통신은, Multipart 형태로 모든 데이터를 첨부해야 함.
+                val multipartBody = MultipartBody.Part.createFormData("profile_image", "myProfile.jpg", fileReqBody)
+
 
             }
         }
