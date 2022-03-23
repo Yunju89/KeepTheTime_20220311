@@ -26,6 +26,8 @@ class MyProfileFragment : BaseFragment(){
 
     lateinit var binding : FragmentMyProfileBinding
 
+    val REQ_CODE_GALLERY = 2000
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,6 +46,19 @@ class MyProfileFragment : BaseFragment(){
     }
 
     override fun setupEvents() {
+
+        binding.imgProfile.setOnClickListener {
+//            이미지선택 화면으로 이동 - 안드로이드 제공 기능 활용 : Intent
+
+//            다른 화면에서 결과 받아오기 - Intent : StartActivityForResult
+
+            val myIntent = Intent()
+            myIntent.action = Intent.ACTION_PICK    // 뭔가 가지러 가는 행동이라고 명시
+            myIntent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE   // 사진 가지러 간다고 명시
+            startActivityForResult(myIntent,REQ_CODE_GALLERY)
+
+
+       }
 
         binding.btnManagePlaces.setOnClickListener {
             val myIntent = Intent(mContext, ManagePlacesActivity::class.java)
