@@ -148,7 +148,22 @@ class MyProfileFragment : BaseFragment(){
 //                cf) 파일이 같이 첨부되는 API 통신은, Multipart 형태로 모든 데이터를 첨부해야 함.
                 val multipartBody = MultipartBody.Part.createFormData("profile_image", "myProfile.jpg", fileReqBody)
 
-//
+//                실제 서버에 완성된 데이터 전송.
+                apiList.putRequestProfileImg(
+                    multipartBody
+                ).enqueue(object : Callback<BasicResponse>{
+                    override fun onResponse(
+                        call: Call<BasicResponse>,
+                        response: Response<BasicResponse>
+                    ) {
+
+                    }
+
+                    override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+
+                    }
+
+                })
 
 
             }

@@ -1,5 +1,6 @@
 package org.techtown.keepthetime_20220311.api
 
+import okhttp3.MultipartBody
 import org.techtown.keepthetime_20220311.datas.BasicResponse
 import retrofit2.Call
 import retrofit2.http.*
@@ -95,5 +96,11 @@ interface APIList {
         @Field("nick_name") nickname: String,
     ) :Call<BasicResponse>
 
+//    프로필 사진 첨부 > 파라미터에 파일이 있다 : Field 대신 Multipart 활용
+    @Multipart
+    @PUT("/user/image")
+    fun putRequestProfileImg(
+        @Part img: MultipartBody.Part       // Multipart > part 로 첨부
+    ):Call<BasicResponse>
 
 }
